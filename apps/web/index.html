@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no"
+    />
+    <meta name="theme-color" content="#ffffff" />
+    <title>Marketplace</title>
+    <!--
+      Telegram's webview injects this script. Loading it here (not via npm) means
+      the SDK can read window.Telegram.WebApp synchronously on boot. It is a no-op
+      in a normal browser, so it's safe in web mode too.
+    -->
+    <script src="https://telegram.org/js/telegram-web-app.js?57"></script>
+    <link rel="preconnect" href="https://cdn.example.com" crossorigin />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
