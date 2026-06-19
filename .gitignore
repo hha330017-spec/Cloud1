@@ -1,0 +1,30 @@
+# Dependencies
+node_modules/
+.pnpm-store/
+
+# Build output
+dist/
+build/
+.next/
+*.tsbuildinfo
+
+# Turborepo
+.turbo/
+
+# Env files (never commit real secrets; .env.example is tracked)
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+npm-debug.log*
+pnpm-debug.log*
+
+# Editor / OS
+.DS_Store
+.idea/
+.vscode/
+
+# Drizzle / build artifacts
+dist/stats.html

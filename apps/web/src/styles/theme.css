@@ -1,0 +1,52 @@
+/*
+ * In TMA mode, themeParams.bindCssVars() injects the real --tg-theme-* values
+ * from the user's Telegram client. These :root defaults are the WEB-mode
+ * fallback (and a safety net before bind runs), so components can always read
+ * var(--tg-theme-*) regardless of environment.
+ */
+:root {
+  --tg-theme-bg-color: #ffffff;
+  --tg-theme-secondary-bg-color: #f1f1f4;
+  --tg-theme-text-color: #111111;
+  --tg-theme-hint-color: #8a8a8e;
+  --tg-theme-link-color: #2481cc;
+  --tg-theme-button-color: #2481cc;
+  --tg-theme-button-text-color: #ffffff;
+  --tg-theme-destructive-text-color: #d14b46;
+
+  /* Safe-area insets: real values come from viewport.bindCssVars() in TMA. */
+  --tg-viewport-safe-area-inset-top: env(safe-area-inset-top, 0px);
+  --tg-viewport-safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+/* System dark-mode fallback for web users (TMA overrides via bindCssVars). */
+@media (prefers-color-scheme: dark) {
+  html[data-platform='web']:root {
+    --tg-theme-bg-color: #18222d;
+    --tg-theme-secondary-bg-color: #131a23;
+    --tg-theme-text-color: #ffffff;
+    --tg-theme-hint-color: #7d8b99;
+    --tg-theme-link-color: #6ab3f3;
+    --tg-theme-button-color: #5288c1;
+    --tg-theme-button-text-color: #ffffff;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--tg-theme-bg-color);
+  color: var(--tg-theme-text-color);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Respect Telegram's safe areas so content isn't hidden under the header. */
+  padding-top: var(--tg-viewport-safe-area-inset-top);
+  padding-bottom: var(--tg-viewport-safe-area-inset-bottom);
+}
+
+/* Web-only chrome (own header/back button) — hidden inside Telegram. */
+html[data-platform='tma'] .web-only {
+  display: none !important;
+}
